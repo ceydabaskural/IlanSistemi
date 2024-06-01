@@ -9,19 +9,17 @@
     <h4>Son İlanlar</h4>
 </div>
 <div class="row"> 
-    @foreach (var adv in Model.Advertisements)
+    @foreach (var adv in Model.AdvertisementsModel)
     {
-        @foreach (var ctg in Model.Categories)
-        {
-            <div class="card col-md-4 m-2 text-center" style="width: 18rem;">
+            <div class="card col-md-4 m-4 text-center" style="width: 20rem;">
                 <img src="https://localhost:7121/uploads/books/ImageUrl" class="card-img-top mx-auto mt-3" alt="..." style="height:350px; width:250px;">
                 <div class="card-body">
                     <h5 class="card-title">@adv.TitleName</h5>
                     <h3 class="card-text">@adv.Price.ToString("n0") ₺</h3>
-                    <a asp-controller="Categories" asp-action="Index" asp-route-id="@adv.CategoryId" class="text primary">@ctg.CategoryName </a>
+                    <a asp-controller="Categories" asp-action="GetCategories" asp-route-id="@adv.CategoryId" class="text primary">@adv.CategoryName </a>
                 </div>
             </div>
-        }
+        
        
     }
 </div>
@@ -37,13 +35,9 @@
             <div class="col-md-3">
                 <img src="#">
                 <div class="col">
-                    <a asp-controller="Categories" asp-action="Index" asp-route-id="@ctg.CategoryId" class="text-black">@ctg.CategoryName</a>
+                    <a asp-controller="Categories" asp-action="GetCategories" asp-route-id="@ctg.CategoryId" class="text-black">@ctg.CategoryName</a>
                 </div>
             </div>
-            
-            
         }
-        
-        
     </div>
 </div>

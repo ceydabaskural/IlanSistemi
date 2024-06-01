@@ -1,0 +1,45 @@
+﻿@model IEnumerable<IlanSistemi.Models.Entitites.Advertisement>
+
+@{
+    ViewData["Title"] = "GetCategories";
+}
+
+<h1>Kategori ismini dinamik yap!</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TitleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.TitleName
+                </td>
+                <td>
+                    @item.Price.ToString("n0") ₺
+                </td>
+                <td>
+                    @item.PublicationDate
+                </td>
+                <td>
+                    <a class="text-primary " asp-controller="Advertisements" asp-action="Edit" asp-route-categoryid="@item.CategoryId">güncelle</a> /
+                    <a class="text-primary" asp-controller="Advertisements" asp-action="Delete" asp-route-categoryid="@item.CategoryId">sil</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

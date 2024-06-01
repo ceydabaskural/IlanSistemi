@@ -169,5 +169,36 @@ namespace IlanSistemi.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
+
+        public IActionResult GetCategories(int id)
+        {
+            List<Advertisement> list = new List<Advertisement>();
+
+            SqlDataAdapter da = new SqlDataAdapter("select * from dbo.Advertisements where CategoryId=@CategoryId", sqlConnection);
+            da.SelectCommand.Parameters.AddWithValue("CategoryId",id);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+
+            foreach (DataRow data in dt.Rows)
+            {
+                Advertisement advertisement = new Advertisement
+                {
+                    TitleId = Convert.ToInt32(data["TitleId"]),
+                    TitleName = (data["TitleName"]).ToString(),
+                    CategoryId = Convert.ToInt32(data["CategoryId"]),
+                    Description = (data["Description"]).ToString(),
+                    ListelemeUrl = (data["ListelemeUrl"]).ToString(),
+                    DetayUrl = (data["DetayUrl"]).ToString(),
+                    Price = Convert.ToDecimal(data["Price"]),
+                    PublicationDate = Convert.ToDateTime(data["PublicationDate"]),
+                };
+                list.Add(advertisement);
+            }
+
+            return View(list);
+        }
+
     }
 }

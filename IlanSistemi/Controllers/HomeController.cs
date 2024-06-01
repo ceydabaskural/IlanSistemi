@@ -19,7 +19,7 @@ namespace IlanSistemi.Controllers
         public IActionResult Index()
         {
             HomePageModel model = new HomePageModel();
-            model.Advertisements = GetAdvertisements();
+            model.AdvertisementsModel = GetAdvertisements();
             model.Categories = GetCategories();
 
             return View(model);
@@ -49,20 +49,21 @@ namespace IlanSistemi.Controllers
         }
 
 
-        public List<Advertisement> GetAdvertisements()
+        public List<AdViewModel> GetAdvertisements()
         {
-            SqlDataAdapter da = new SqlDataAdapter("select * from dbo.Advertisements", connection);
+            SqlDataAdapter da = new SqlDataAdapter("select * from dbo.Advertisements as a inner join dbo.Categories as c on c.CategoryId=a.CategoryId", connection);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
 
-            List<Advertisement> advertisements = new List<Advertisement>();
+            List<AdViewModel> advertisements = new List<AdViewModel>();
             foreach (DataRow row in dt.Rows)
             {
-                advertisements.Add(new Advertisement
+                advertisements.Add(new AdViewModel
                 {
                     TitleId = Convert.ToInt32(row["TitleId"]),
                     TitleName = row["TitleName"].ToString(),
+                    CategoryName = row["CategoryName"].ToString(),
                     CategoryId = Convert.ToInt32(row["CategoryId"]),
                     Description = row["Description"].ToString(),
                     DetayUrl = row["DetayUrl"].ToString(),
