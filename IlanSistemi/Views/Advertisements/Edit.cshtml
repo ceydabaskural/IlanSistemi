@@ -1,0 +1,61 @@
+﻿@model Advertisement
+
+@{
+    ViewData["Title"] = "İlan Güncelle";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <input asp-for="TitleId" class="form-control" type="hidden" /> 
+            <div class="form-group">
+                <label asp-for="TitleName" class="control-label"></label>
+                <input asp-for="TitleName" class="form-control" />
+                <span asp-validation-for="TitleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control">
+                    @foreach (var item in ViewBag.KategoriListesi)
+                    {
+                        <option value="@item.CategoryId">@item.CategoryName</option>
+                    }
+
+                </select>
+
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublicationDate" class="control-label"></label>
+                <input asp-for="PublicationDate" class="form-control" />
+                <span asp-validation-for="PublicationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ListelemeUrl" class="control-label"></label>
+                <input asp-for="ListelemeUrl" class="form-control" />
+                <span asp-validation-for="ListelemeUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DetayUrl" class="control-label"></label>
+                <input asp-for="DetayUrl" class="form-control" />
+                <span asp-validation-for="DetayUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="güncelle" class="btn btn-light" />
+            </div>
+        </form>
+    </div>
+</div>
+

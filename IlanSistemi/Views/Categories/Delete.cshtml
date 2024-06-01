@@ -1,0 +1,28 @@
+﻿@model IlanSistemi.Models.Entitites.Category
+
+@{
+    ViewData["Title"] = "Kategori Sil";
+}
+
+<h4>Kategoriler</h4>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">
+        @Html.DisplayNameFor(model => model.CategoryName)
+    </dt>
+    <dd class="col-sm-7">
+        @Html.DisplayFor(model => model.CategoryName)
+    </dd>
+    <dt class="col-sm-3">
+        @Html.DisplayNameFor(model => model.ImageUrl)
+    </dt>
+    <dd class="col-sm-7">
+        @Html.DisplayFor(model => model.ImageUrl)
+    </dd>
+</dl>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="CategoryId" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+</form>
+</div>

@@ -1,0 +1,56 @@
+﻿@model AdCategoryListView
+
+@{
+    ViewData["Title"] = "İlan Ekle";
+}
+<h4>İlan Ekle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Advertisement.TitleName" class="control-label"></label>
+                <input asp-for="Advertisement.TitleName" class="form-control" />
+                <span asp-validation-for="Advertisement.TitleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advertisement.Description" class="control-label"></label>
+                <textarea asp-for="Advertisement.Description" class="form-control"></textarea>
+                <span asp-validation-for="Advertisement.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advertisement.Price" class="control-label"></label>
+                <input asp-for="Advertisement.Price" class="form-control" />
+                <span asp-validation-for="Advertisement.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advertisement.PublicationDate" class="control-label"></label>
+                <input asp-for="Advertisement.PublicationDate" class="form-control" />
+                <span asp-validation-for="Advertisement.PublicationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advertisement.DetayUrl" class="control-label"></label>
+                <input asp-for="Advertisement.DetayUrl" class="form-control" />
+                <span asp-validation-for="Advertisement.DetayUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advertisement.ListelemeUrl" class="control-label"></label>
+                <input asp-for="Advertisement.ListelemeUrl" class="form-control" />
+                <span asp-validation-for="Advertisement.ListelemeUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Advertisement.CategoryId" class="control-label"></label>
+                <select asp-for="Advertisement.CategoryId" class="form-control">
+                    @foreach (var item in Model.Categories)
+                    {
+                        <option value="@item.CategoryId">@item.CategoryName</option>
+                    }
+                </select>
+                <span asp-validation-for="Advertisement.CategoryId" class="text-danger"></span>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Ekle" class="btn btn-light" />
+                </div>
+        </form>
+    </div>
+</div>

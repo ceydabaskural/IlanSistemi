@@ -1,0 +1,29 @@
+﻿@model IlanSistemi.Models.Entitites.Category
+
+@{
+    ViewData["Title"] = "Kategori Ekle";
+}
+
+<h4>Kategori Ekle</h4>
+<hr />
+<form asp-action="Create">
+    <div class="row">
+        @* border ekle classa  *@
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3 ">
+                <input type="submit" value="Ekle" class="btn btn-light" />
+            </div>
+        </div>
+    </div>
+</form>
