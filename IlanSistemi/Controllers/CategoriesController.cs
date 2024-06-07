@@ -1,4 +1,5 @@
-﻿using IlanSistemi.Models.Entitites;
+﻿using IlanSistemi.Models;
+using IlanSistemi.Models.Entitites;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using NuGet.Protocol.Plugins;
@@ -176,7 +177,7 @@ namespace IlanSistemi.Controllers
             List<Advertisement> list = new List<Advertisement>();
 
             SqlDataAdapter da = new SqlDataAdapter("select * from dbo.Advertisements where CategoryId=@CategoryId", sqlConnection);
-            da.SelectCommand.Parameters.AddWithValue("CategoryId",id);
+            da.SelectCommand.Parameters.AddWithValue("CategoryId", id);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -199,6 +200,5 @@ namespace IlanSistemi.Controllers
 
             return View(list);
         }
-
     }
 }

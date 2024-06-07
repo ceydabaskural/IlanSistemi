@@ -15,7 +15,7 @@ namespace IlanSistemi.Controllers
         }
         public IActionResult Index()
         {
-            SqlDataAdapter sqlData = new SqlDataAdapter("select * from dbo.Advertisements as a inner join dbo.Categories as c on c.CategoryId=a.CategoryId order by PublicationDate", connection);
+            SqlDataAdapter sqlData = new SqlDataAdapter("select * from dbo.Advertisements as a inner join dbo.Categories as c on c.CategoryId=a.CategoryId order by PublicationDate desc", connection);
             DataTable table = new DataTable();
             sqlData.Fill(table);
 
@@ -153,6 +153,7 @@ namespace IlanSistemi.Controllers
         public IActionResult Edit(int id) 
         {
             ViewBag.KategoriListesi = GetCategories();
+
 
             return View(GetAdvertisement(id));
         }

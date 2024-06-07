@@ -4,7 +4,6 @@
     ViewData["Title"] = "İlan Güncelle";
 }
 
-
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -22,7 +21,6 @@
                     {
                         <option value="@item.CategoryId">@item.CategoryName</option>
                     }
-
                 </select>
 
                 <span asp-validation-for="CategoryId" class="text-danger"></span>

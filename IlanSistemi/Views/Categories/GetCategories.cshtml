@@ -1,10 +1,10 @@
-﻿@model IEnumerable<IlanSistemi.Models.Entitites.Advertisement>
+﻿@model  IEnumerable<IlanSistemi.Models.Entitites.Advertisement> 
 
 @{
-    ViewData["Title"] = "GetCategories";
+    ViewData["Title"] = "İlanlar";
 }
 
-<h1>Kategori ismini dinamik yap!</h1>
+<h1> </h1>
 
 <table class="table">
     <thead>
@@ -18,28 +18,45 @@
             <th>
                 @Html.DisplayNameFor(model => model.PublicationDate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListelemeUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DetayUrl)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @item.TitleName
-                </td>
-                <td>
-                    @item.Price.ToString("n0") ₺
-                </td>
-                <td>
-                    @item.PublicationDate
-                </td>
-                <td>
-                    <a class="text-primary " asp-controller="Advertisements" asp-action="Edit" asp-route-categoryid="@item.CategoryId">güncelle</a> /
-                    <a class="text-primary" asp-controller="Advertisements" asp-action="Delete" asp-route-categoryid="@item.CategoryId">sil</a>
-
-                </td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ListelemeUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetayUrl)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
     </tbody>
 </table>
