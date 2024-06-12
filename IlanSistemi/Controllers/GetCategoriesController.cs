@@ -17,7 +17,7 @@ namespace IlanSistemi.Controllers
         }
         public IActionResult Index(int id)
         {
-            GetCategoriesModel getCategories  = new GetCategoriesModel();
+            GetCategoriesModel getCategories = new GetCategoriesModel();
             getCategories.Advertisements = GetAdvertisement(id);
             getCategories.Category = GetCategory(id);
             return View(getCategories);
@@ -61,7 +61,7 @@ namespace IlanSistemi.Controllers
                     Description = row["Description"].ToString(),
                     DetayUrl = row["DetayUrl"].ToString(),
                     ListelemeUrl = Convert.ToString(row["ListelemeUrl"]),
-                    Price  = Convert.ToDecimal(row["Price"]),
+                    Price = Convert.ToDecimal(row["Price"]),
                     PublicationDate = Convert.ToDateTime(row["PublicationDate"])
 
                 };
